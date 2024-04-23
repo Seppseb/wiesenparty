@@ -161,6 +161,7 @@
         const a = document.createElement('a');
         a.href = url;
         a.download = fileName;
+        a.setAttribute('download', fileName); // Added download attribute
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

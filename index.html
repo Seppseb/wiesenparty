@@ -62,14 +62,13 @@
     <span class="error-message" id="straße-error">Bitte geben Sie Ihre Straße ein.</span>
     <input type="text" id="hausnummer" placeholder="Hausnummer">
     <span class="error-message" id="hausnummer-error">Bitte geben Sie Ihre Hausnummer ein.</span>
-    <button onclick="generatePDF()">PDF Generieren</button>
-    <a id="download-link" href="#"><button>PDF Herunterladen</button></a>
+    <button onclick="generateAndDownloadPDF()">PDF Generieren & Herunterladen</button>
     <a id="whatsapp-button" href="https://wa.me/your-phonenumber" target="_blank"><button>WhatsApp Chat</button></a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.10.0/dist/pdf-lib.js"></script>
 <script>
-    async function generatePDF() {
+    async function generateAndDownloadPDF() {
         const vorname = document.getElementById('vorname').value.trim();
         const nachname = document.getElementById('nachname').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -162,9 +161,9 @@
         const a = document.createElement('a');
         a.href = url;
         a.download = fileName;
-        document.getElementById('download-link').appendChild(a);
+        document.body.appendChild(a);
         a.click();
-        document.getElementById('download-link').removeChild(a);
+        document.body.removeChild(a);
     }
 </script>
 

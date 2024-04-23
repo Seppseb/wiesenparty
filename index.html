@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiesen Party Anmeldung</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="text"] {
+        width: calc(100% - 20px); /* Adjusted for border */
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .error-message {
+        color: red;
+        font-size: 12px;
+        display: none;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    #whatsapp-button {
+        background-color: #25d366; /* WhatsApp green */
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Wiesen Party Anmeldung</h2>
+    <input type="text" id="vorname" placeholder="Vorname">
+    <span class="error-message" id="vorname-error">Bitte geben Sie Ihren Vornamen ein.</span>
+    <input type="text" id="nachname" placeholder="Nachname">
+    <span class="error-message" id="nachname-error">Bitte geben Sie Ihren Nachnamen ein.</span>
+    <input type="text" id="email" placeholder="Email">
+    <span class="error-message" id="email-error">Bitte geben Sie eine gültige Email-Adresse ein.</span>
+    <input type="text" id="handynummer" placeholder="Handynummer">
+    <span class="error-message" id="handynummer-error">Bitte geben Sie Ihre Handynummer ein.</span>
+    <input type="text" id="stadt" placeholder="Stadt">
+    <span class="error-message" id="stadt-error">Bitte geben Sie Ihre Stadt ein.</span>
+    <input type="text" id="straße" placeholder="Straße">
+    <span class="error-message" id="straße-error">Bitte geben Sie Ihre Straße ein.</span>
+    <input type="text" id="hausnummer" placeholder="Hausnummer">
+    <span class="error-message" id="hausnummer-error">Bitte geben Sie Ihre Hausnummer ein.</span>
+    <button onclick="generatePDF()">PDF Generieren</button>
+    <a id="whatsapp-button" href="https://wa.me/test" target="_blank"><button>WhatsApp Chat</button></a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.10.0/dist/pdf-lib.js"></script>
+<script>
+    async function generatePDF() {
+        const vorname = document.getElementById('vorname').value.trim();
+        const nachname = document.getElementById('nachname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const handynummer = document.getElementById('handynummer').value.trim();
+        const stadt = document.getElementById('stadt').value.trim();
+        const straße = document.getElementById('straße').value.trim();
+        const hausnummer = document.getElementById('hausnummer').value.trim();
+
+        // Validation
+        let isValid = true;
+        if (vorname === '') {
+            document.getElementById('vorname-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('vorname-error').style.display = 'none';
+        }
+        if (nachname === '') {
+            document.getElementById('nachname-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('nachname-error').style.display = 'none';
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('email-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('email-error').style.display = 'none';
+        }
+        if (handynummer === '') {
+            document.getElementById('handynummer-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('handynummer-error').style.display = 'none';
+        }
+        if (stadt === '') {
+            document.getElementById('stadt-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('stadt-error').style.display = 'none';
+        }
+        if (straße === '') {
+            document.getElementById('straße-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('straße-error').style.display = 'none';
+        }
+        if (hausnummer === '') {
+            document.getElementById('hausnummer-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('hausnummer-error').style.display = 'none';
+        }
+
+        if (!isValid) {
+            return;
+        }
+
+        // Create a new PDF document
+        const pdfDoc = await PDFLib.PDFDocument.create();
+        const page = pdfDoc.addPage();
+
+        // Set up font and text options
+        const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+        const fontSize = 15;
+        const textOptions = {
+            font: font,
+            size: fontSize,
+        };
+
+        // Add text to the PDF
+        page.drawText(`Vorname: ${vorname}`, { x: 50, y: 600 }, textOptions);
+        page.drawText(`Nachname: ${nachname}`, { x: 50, y: 575 }, textOptions);
+        page.drawText(`Email: ${email}`, { x: 50, y: 550 }, textOptions);
+        page.drawText(`Handynummer: ${handynummer}`, { x: 50, y: 525 }, textOptions);
+        page.drawText(`Stadt: ${stadt}`, { x: 50, y: 500 }, textOptions);
+        page.drawText(`Straße: ${straße}`, { x: 50, y: 475 }, textOptions);
+        page.drawText(`Hausnummer: ${hausnummer}`, { x: 50, y: 450 }, textOptions);
+
+        // Save the PDF to a Blob
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+        // Set PDF file name to vorname-nachname.pdf
+        const fileName = `${vorname}-${nachname}.pdf`;
+
+        const url = URL.createObjectURL(blob);
+
+        // Create download link
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+</script>
+
+</body>
+</html>

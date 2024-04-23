@@ -63,7 +63,8 @@
     <input type="text" id="hausnummer" placeholder="Hausnummer">
     <span class="error-message" id="hausnummer-error">Bitte geben Sie Ihre Hausnummer ein.</span>
     <button onclick="generatePDF()">PDF Generieren</button>
-    <a id="whatsapp-button" href="https://wa.me/test" target="_blank"><button>WhatsApp Chat</button></a>
+    <a id="download-link" href="#"><button>PDF Herunterladen</button></a>
+    <a id="whatsapp-button" href="https://wa.me/your-phonenumber" target="_blank"><button>WhatsApp Chat</button></a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.10.0/dist/pdf-lib.js"></script>
@@ -161,9 +162,9 @@
         const a = document.createElement('a');
         a.href = url;
         a.download = fileName;
-        document.body.appendChild(a);
+        document.getElementById('download-link').appendChild(a);
         a.click();
-        document.body.removeChild(a);
+        document.getElementById('download-link').removeChild(a);
     }
 </script>
 

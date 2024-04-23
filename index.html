@@ -63,6 +63,7 @@
     <input type="text" id="hausnummer" placeholder="Hausnummer">
     <span class="error-message" id="hausnummer-error">Bitte geben Sie Ihre Hausnummer ein.</span>
     <button onclick="generateAndDownloadPDF()">PDF Generieren & Herunterladen</button>
+    <button onclick="generateAndDownloadCSV()">CSV Generieren & Herunterladen</button>
     <a id="whatsapp-button" href="https://wa.me/your-phonenumber" target="_blank"><button>WhatsApp Chat</button></a>
 </div>
 
@@ -154,6 +155,33 @@
 
         // Set PDF file name to vorname-nachname.pdf
         const fileName = `${vorname}-${nachname}.pdf`;
+
+        const url = URL.createObjectURL(blob);
+
+        // Create download link
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.setAttribute('download', fileName); // Added download attribute
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    function generateAndDownloadCSV() {
+        const vorname = document.getElementById('vorname').value.trim();
+        const nachname = document.getElementById('nachname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const handynummer = document.getElementById('handynummer').value.trim();
+        const stadt = document.getElementById('stadt').value.trim();
+        const straße = document.getElementById('straße').value.trim();
+        const hausnummer = document.getElementById('hausnummer').value.trim();
+
+        const csvContent = `Vorname;Nachname;Email;Handynummer;Stadt;Straße;Hausnummer\n${vorname};${nachname};${email};${handynummer};${stadt};${straße};${hausnummer}`;
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+
+        // Set CSV file name to vorname-nachname.csv
+        const fileName = `${vorname}-${nachname}.csv`;
 
         const url = URL.createObjectURL(blob);
 

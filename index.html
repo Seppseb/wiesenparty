@@ -9,6 +9,9 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+        background-color: #f5f5f5; /* Light background color */
+        color: #333; /* Dark text color */
+        transition: background-color 0.3s, color 0.3s;
     }
     .container {
         max-width: 600px;
@@ -16,6 +19,8 @@
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        background-color: #fff; /* Light container background color */
+        transition: background-color 0.3s;
     }
     input[type="text"], input[type="date"] {
         width: calc(100% - 20px); /* Adjusted for border */
@@ -24,6 +29,8 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         box-sizing: border-box;
+        background-color: #f5f5f5; /* Light input background color */
+        color: #333; /* Dark text color */
     }
     .error-message {
         color: red;
@@ -38,12 +45,32 @@
         border-radius: 5px;
         cursor: pointer;
         margin-right: 10px;
+        background-color: #333; /* Dark button background color */
     }
     #whatsapp-button {
         background-color: #25d366; /* WhatsApp green */
     }
     .input-instruction {
         margin-bottom: 5px;
+    }
+    /* Dark Mode Styles */
+    body.dark-mode {
+        background-color: #222; /* Dark background color */
+        color: #ddd; /* Light text color */
+    }
+    body.dark-mode .container {
+        background-color: #333; /* Dark container background color */
+    }
+    body.dark-mode input[type="text"],
+    body.dark-mode input[type="date"] {
+        background-color: #444; /* Dark input background color */
+        color: #ddd; /* Light text color */
+    }
+    body.dark-mode .error-message {
+        color: #ffcccc; /* Light error message color */
+    }
+    body.dark-mode button {
+        background-color: #555; /* Dark button background color */
     }
 </style>
 </head>
@@ -80,7 +107,18 @@
     <a id="whatsapp-button" href="https://wa.me/491759471450" target="_blank"><button>WhatsApp Chat</button></a>
 </div>
 
+<!-- Dark Mode Toggle -->
+<div style="text-align: center; margin-top: 20px;">
+    <label for="dark-mode-toggle">Dark Mode</label>
+    <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
+</div>
+
 <script>
+    function toggleDarkMode() {
+        const body = document.body;
+        body.classList.toggle('dark-mode');
+    }
+
     function generateAndDownloadCSV() {
         const vorname = document.getElementById('vorname').value.trim();
         const nachname = document.getElementById('nachname').value.trim();

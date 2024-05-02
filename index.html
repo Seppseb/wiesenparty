@@ -53,6 +53,10 @@
     .input-instruction {
         margin-bottom: 5px;
     }
+    .input-instruction-important {
+        margin-bottom: 5px;
+	color: red;
+    }
     /* Dark Mode Styles */
     body.dark-mode {
         background-color: #222; /* Dark background color */
@@ -84,7 +88,7 @@
     <div class="input-instruction">Bitte Ihren Nachnamen eingeben:</div>
     <input type="text" id="nachname" placeholder="Nachname">
     <span class="error-message" id="nachname-error">Bitte geben Sie Ihren Nachnamen ein.</span>
-    <div class="input-instruction">Bitte eine gültige Email-Adresse eingeben:</div>
+    <div class="input-instruction">Bitte Ihre Email-Adresse eingeben:</div>
     <input type="text" id="email" placeholder="Email">
     <span class="error-message" id="email-error">Bitte geben Sie eine gültige Email-Adresse ein.</span>
     <div class="input-instruction">Bitte Ihre Handynummer eingeben:</div>
@@ -102,7 +106,10 @@
     <div class="input-instruction">Bitte Ihr Geburtsdatum eingeben:</div>
     <input type="date" id="birthday" placeholder="Geburtsdatum">
     <span class="error-message" id="birthday-error">Sie müssen mindestens 18 Jahre alt sein, um sich anzumelden.</span>
-    <div class="input-instruction">Bitte als zuerst das Formular generieren und dann an die verlinkte Nummer schicken!</div>
+    <div class="input-instruction-important">Deine Anmeldung ist nur gültig wenn du alle folgenden Schritte durchführst:</div>
+    <div class="input-instruction-important">1. Fülle das Formular aus und lade es herunter</div>
+    <div class="input-instruction-important">2. Sende das Formular an die verlinkte Nummer über Whatsapp</div>
+    <div class="input-instruction-important">3. Schicke 25€ per paypal an folgende email: </div>
     <button onclick="generateAndDownloadCSV()">Formular Generieren & Herunterladen</button>
     <a id="whatsapp-button" href="https://wa.me/491759471450" target="_blank"><button>WhatsApp Chat</button></a>
 </div>

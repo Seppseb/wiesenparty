@@ -59,7 +59,7 @@
     }
 </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <div class="container">
     <h1>Willkommen bei der Wiesenparty</h1>
@@ -84,7 +84,7 @@
 <script>
         // Load dark mode state on page load
     document.addEventListener('DOMContentLoaded', function() {
-        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+	const isDarkMode = localStorage.getItem('darkMode') === 'true' || false; // Set default to true if not found
         const body = document.body;
         if (isDarkMode) {
             body.classList.add('dark-mode');

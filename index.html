@@ -59,7 +59,7 @@
     }
 </style>
 </head>
-<body class="dark-mode">
+<body>
 
 <div class="container">
     <h1>Willkommen bei der Wiesenparty</h1>
@@ -84,24 +84,22 @@
 <script>
         // Load dark mode state on page load
     document.addEventListener('DOMContentLoaded', function() {
-	const isDarkMode = localStorage.getItem('darkMode') === 'true' || false; // Set default to true if not found
-        const body = document.body;
-        if (isDarkMode) {
-            body.classList.add('dark-mode');
-        }
-        // Update checkbox state
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.checked = isDarkMode;
-    });
-
-    function toggleDarkMode() {
-        const body = document.body;
-        const isDarkMode = body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', isDarkMode);
-        // Update checkbox state
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.checked = isDarkMode;
+    const isDarkMode = !localStorage.getItem('darkMode')|| localStorage.getItem('darkMode') === 'true'; // Set default to false if not found
+    const body = document.body;
+    if (isDarkMode) {
+        body.classList.add('dark-mode');
     }
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.checked = isDarkMode; // Set checkbox state based on 'darkMode' value
+});
+
+function toggleDarkMode() {
+    const body = document.body;
+    const isDarkMode = body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode); // Store dark mode state
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.checked = isDarkMode; // Update checkbox state
+}
 </script>
 
 </body>

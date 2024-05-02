@@ -9,7 +9,11 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5; /* Light background color */
+        /* Add the background image */
+        background-image: url('image.png');
+        background-size: cover; /* Cover the entire background */
+        background-repeat: no-repeat; /* Prevent repeating of the image */
+        background-attachment: fixed; /* Fixed positioning */
         color: #333; /* Dark text color */
         transition: background-color 0.3s, color 0.3s;
     }
@@ -19,7 +23,7 @@
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        background-color: #fff; /* Light container background color */
+        background-color: rgba(255, 255, 255, 0.8); /* Adjust opacity here */
         transition: background-color 0.3s;
     }
     input[type="text"], input[type="date"] {
@@ -47,15 +51,12 @@
         margin-right: 10px;
         background-color: #333; /* Dark button background color */
     }
-    #whatsapp-button {
-        background-color: #25d366; /* WhatsApp green */
-    }
     .input-instruction {
         margin-bottom: 5px;
     }
     .input-instruction-important {
         margin-bottom: 5px;
-	color: #ff6666;
+    color: #ff6666; /* Lighter red color */
     }
     /* Dark Mode Styles */
     body.dark-mode {
@@ -63,7 +64,7 @@
         color: #ddd; /* Light text color */
     }
     body.dark-mode .container {
-        background-color: #333; /* Dark container background color */
+        background-color: rgba(51, 51, 51, 0.95); /* Adjust opacity for dark mode */
     }
     body.dark-mode input[type="text"],
     body.dark-mode input[type="date"] {
@@ -115,12 +116,16 @@
     <input type="text" id="drink" placeholder="Lieblingsgetränk">
     <span class="error-message" id="birthday-error">Sie müssen mindestens 20 Jahre alt sein, um sich anzumelden.</span>
     <div class="input-instruction-important">Deine Anmeldung ist nur gültig wenn du alle folgenden Schritte durchführst:</div>
+    <br>
     <div class="input-instruction-important">1. Fülle die oben stehenden Felder aus und lade das Formular herunter</div>
+    <br>
     <div class="input-instruction-important">2. Sende das Formular an die verlinkte Nummer über Whatsapp</div>
-    <div class="input-instruction-important">3. Schicke 25€ per paypal das verlinkte Paypal Profil, gib als Verwendungszweck Vor- und Nachnamen der Person an, für die du bezahlst!</div>
+    <br>
+    <div class="input-instruction-important">3. Schicke 25€ direkt nach deiner Anmeldung per paypal Freunde an das verlinkte Paypal Profil, gib als Verwendungszweck Vor- und Nachnamen der Personen an, für die du bezahlst!</div>
+    <br>
     <button onclick="generateAndDownloadCSV()">Formular Generieren & Herunterladen</button>
-    <a id="whatsapp-button" href="https://wa.me/491759471450" target="_blank"><button>WhatsApp Chat</button></a>
-    <a href="https://www.paypal.com/paypalme/davidschumacher06" target="_blank"><button>PayPal</button></a>
+    <a href="https://wa.me/491759471450" target="_blank"><button>WhatsApp Chat</button></a>
+    <a href="https://www.paypal.com/paypalme/davidschumacher06/25" target="_blank"><button>PayPal</button></a>
 </div>
 
 <div style="text-align: center; margin-top: 20px;">

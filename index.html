@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wiesenparty Anmeldung</title>
+<title>Willkommen bei der Wiesenparty</title>
 <style>
     body {
         font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5; /* Light background color */
-        color: #333; /* Dark text color */
         transition: background-color 0.3s, color 0.3s;
     }
     .container {
@@ -19,206 +19,88 @@
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        background-color: #fff; /* Light container background color */
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s;
     }
-    input[type="text"], input[type="date"] {
-        width: calc(100% - 20px); /* Adjusted for border */
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        background-color: #f5f5f5; /* Light input background color */
-        color: #333; /* Dark text color */
+    h1 {
+        color: #333;
+        text-align: center;
     }
-    .error-message {
-        color: red;
-        font-size: 12px;
-        display: none;
+    p {
+        margin-bottom: 20px;
     }
     button {
         padding: 10px 20px;
-        background-color: #4CAF50;
+        background-color: #333;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-right: 10px;
-        background-color: #333; /* Dark button background color */
-    }
-    #whatsapp-button {
-        background-color: #25d366; /* WhatsApp green */
-    }
-    .input-instruction {
-        margin-bottom: 5px;
-    }
-    .input-instruction-important {
-        margin-bottom: 5px;
-	color: red;
+        display: block;
+        margin: 0 auto;
     }
     /* Dark Mode Styles */
     body.dark-mode {
-        background-color: #222; /* Dark background color */
-        color: #ddd; /* Light text color */
+        background-color: #222;
+        color: #ddd;
     }
     body.dark-mode .container {
-        background-color: #333; /* Dark container background color */
+        background-color: #333;
     }
-    body.dark-mode input[type="text"],
-    body.dark-mode input[type="date"] {
-        background-color: #444; /* Dark input background color */
-        color: #ddd; /* Light text color */
+    body.dark-mode h1 {
+        color: #ddd;
     }
-    body.dark-mode .error-message {
-        color: #ffcccc; /* Light error message color */
+    body.dark-mode p {
+        color: #ccc;
     }
     body.dark-mode button {
-        background-color: #555; /* Dark button background color */
+        background-color: #555;
     }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Wiesenparty Anmeldung</h2>
-    <div class="input-instruction">Bitte Ihren Vornamen eingeben:</div>
-    <input type="text" id="vorname" placeholder="Vorname">
-    <span class="error-message" id="vorname-error">Bitte geben Sie Ihren Vornamen ein.</span>
-    <div class="input-instruction">Bitte Ihren Nachnamen eingeben:</div>
-    <input type="text" id="nachname" placeholder="Nachname">
-    <span class="error-message" id="nachname-error">Bitte geben Sie Ihren Nachnamen ein.</span>
-    <div class="input-instruction">Bitte Ihre Email-Adresse eingeben:</div>
-    <input type="text" id="email" placeholder="Email">
-    <span class="error-message" id="email-error">Bitte geben Sie eine gültige Email-Adresse ein.</span>
-    <div class="input-instruction">Bitte Ihre Handynummer eingeben:</div>
-    <input type="text" id="handynummer" placeholder="Handynummer">
-    <span class="error-message" id="handynummer-error">Bitte geben Sie Ihre Handynummer ein.</span>
-    <div class="input-instruction">Bitte Ihre Stadt eingeben:</div>
-    <input type="text" id="stadt" placeholder="Stadt">
-    <span class="error-message" id="stadt-error">Bitte geben Sie Ihre Stadt ein.</span>
-    <div class="input-instruction">Bitte Ihre Straße eingeben:</div>
-    <input type="text" id="straße" placeholder="Straße">
-    <span class="error-message" id="straße-error">Bitte geben Sie Ihre Straße ein.</span>
-    <div class="input-instruction">Bitte Ihre Hausnummer eingeben:</div>
-    <input type="text" id="hausnummer" placeholder="Hausnummer">
-    <span class="error-message" id="hausnummer-error">Bitte geben Sie Ihre Hausnummer ein.</span>
-    <div class="input-instruction">Bitte Ihr Geburtsdatum eingeben:</div>
-    <input type="date" id="birthday" placeholder="Geburtsdatum">
-    <span class="error-message" id="birthday-error">Sie müssen mindestens 18 Jahre alt sein, um sich anzumelden.</span>
-    <div class="input-instruction-important">Deine Anmeldung ist nur gültig wenn du alle folgenden Schritte durchführst:</div>
-    <div class="input-instruction-important">1. Fülle das Formular aus und lade es herunter</div>
-    <div class="input-instruction-important">2. Sende das Formular an die verlinkte Nummer über Whatsapp</div>
-    <div class="input-instruction-important">3. Schicke 25€ per paypal an folgende email: </div>
-    <button onclick="generateAndDownloadCSV()">Formular Generieren & Herunterladen</button>
-    <a id="whatsapp-button" href="https://wa.me/491759471450" target="_blank"><button>WhatsApp Chat</button></a>
+    <h1>Willkommen bei der Wiesenparty</h1>
+    <p>Vielen Dank für Ihr Interesse an unserer Party! Bevor Sie mit der Anmeldung fortfahren, lesen Sie bitte die untenstehenden Informationen.</p>
+    <p>Wichtig:</p>
+    <ul>
+        <li>Keine Flaschen oder Müll an/auf der Straße liegen lassen</li>
+        <li>2.</li>
+        <li>3.</li>
+        <li>4.</li>
+    </ul>
+    <a href="registration.html"><button>Weiter zur Anmeldung</button></a>
 </div>
 
-<!-- Dark Mode Toggle -->
 <div style="text-align: center; margin-top: 20px;">
     <label for="dark-mode-toggle">Dark Mode</label>
-    <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()">
+    <!-- Bind the "checked" attribute to isDarkMode -->
+    <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()" 
 </div>
 
+
 <script>
+        // Load dark mode state on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        const body = document.body;
+        if (isDarkMode) {
+            body.classList.add('dark-mode');
+        }
+        // Update checkbox state
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.checked = isDarkMode;
+    });
+
     function toggleDarkMode() {
         const body = document.body;
-        body.classList.toggle('dark-mode');
-    }
-
-    function generateAndDownloadCSV() {
-        const vorname = document.getElementById('vorname').value.trim();
-        const nachname = document.getElementById('nachname').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const handynummer = document.getElementById('handynummer').value.trim();
-        const stadt = document.getElementById('stadt').value.trim();
-        const straße = document.getElementById('straße').value.trim();
-        const hausnummer = document.getElementById('hausnummer').value.trim();
-        const birthday = document.getElementById('birthday').value;
-
-        // Validation
-        let isValid = true;
-        if (vorname === '') {
-            document.getElementById('vorname-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('vorname-error').style.display = 'none';
-        }
-        if (nachname === '') {
-            document.getElementById('nachname-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('nachname-error').style.display = 'none';
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            document.getElementById('email-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('email-error').style.display = 'none';
-        }
-        if (handynummer === '') {
-            document.getElementById('handynummer-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('handynummer-error').style.display = 'none';
-        }
-        if (stadt === '') {
-            document.getElementById('stadt-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('stadt-error').style.display = 'none';
-        }
-        if (straße === '') {
-            document.getElementById('straße-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('straße-error').style.display = 'none';
-        }
-        if (hausnummer === '') {
-            document.getElementById('hausnummer-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('hausnummer-error').style.display = 'none';
-        }
-        if (!birthday || getAge(birthday) < 18) {
-            document.getElementById('birthday-error').style.display = 'block';
-            isValid = false;
-        } else {
-            document.getElementById('birthday-error').style.display = 'none';
-        }
-
-        if (!isValid) {
-            return;
-        }
-
-        const csvContent = `Vorname;Nachname;Email;Handynummer;Stadt;Straße;Hausnummer;Geburtsdatum\n${vorname};${nachname};${email};${handynummer};${stadt};${straße};${hausnummer};${birthday}`;
-        const blob = new Blob([csvContent], { type: 'text/csv' });
-
-        // Set CSV file name to vorname-nachname.csv
-        const fileName = `${vorname}-${nachname}.csv`;
-
-        const url = URL.createObjectURL(blob);
-
-        // Create download link
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
-        a.setAttribute('download', fileName); // Added download attribute
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    }
-
-    function getAge(birthDateString) {
-        const today = new Date();
-        const birthDate = new Date(birthDateString);
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDifference = today.getMonth() - birthDate.getMonth();
-        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        return age;
+        const isDarkMode = body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+        // Update checkbox state
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.checked = isDarkMode;
     }
 </script>
 

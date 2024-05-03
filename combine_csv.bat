@@ -11,7 +11,7 @@ rem Initialize flag to write header only once
 set "write_header=true"
 
 rem Initialize combined CSV file with header
-echo Vorname,Nachname,Email,Handynummer,Stadt,Straße,Hausnummer > "%combined_csv_file%"
+echo Vorname,Nachname,Email,Handynummer,Stadt,Straße,Hausnummer,Wunschlied,Lieblingsgetränk > "%combined_csv_file%"
 
 rem Iterate through each file in the folder
 for %%F in ("%folder_path%\*.csv") do (

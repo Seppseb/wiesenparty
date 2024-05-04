@@ -72,7 +72,7 @@
         color: #ddd; /* Light text color */
     }
     body.dark-mode .error-message {
-        color: #ffcccc; /* Light error message color */
+        color: #ff5555; /* Light error message color */
     }
     body.dark-mode button {
         background-color: #555; /* Dark button background color */
@@ -80,6 +80,42 @@
     .required {
     color: #ff6666; /* Lighter red color */
     }
+    select {
+        /* Existing styles */
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+        color: #333;
+        border-color: #999; /* Adjust border color */
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Modify hover effect */
+    select:hover {
+        background-color: #e0e0e0; /* Adjust hover background color */
+    }
+
+    /* Dark mode styles */
+    body.dark-mode select {
+        background-color: #444; /* Dark input background color */
+        color: #ddd; /* Light text color */
+        border-color: #666; /* Dark border color */
+    }
+
+    body.dark-mode select option {
+        background-color: #333; /* Dark background color */
+        color: #ddd; /* Light text color */
+    }
+
+    body.dark-mode select:hover {
+        background-color: #666; /* Dark hover background color */
+    }
+
 </style>
 </head>
 <body>
@@ -110,6 +146,14 @@
     <span class="error-message" id="hausnummer-error">Bitte geben Sie Ihre Hausnummer ein.</span>
     <div class="input-instruction">Bitte dein Geburtsdatum<span class="required">*</span> eingeben:</div>
     <input type="date" id="birthday" placeholder="Geburtsdatum">
+    <div class="input-instruction">Möchtest du den kostenlosen Campingplatz nutzen<span class="required">*</span>:</div>
+    <select id="camping-sleep">
+        <option value="" disabled selected>Bitte wählen</option>
+        <option value="ja">Ja</option>
+        <option value="nein">Nein</option>
+        <option value="vielleicht">Vielleicht</option>
+    </select>
+    <span class="error-message" id="camping-sleep-error">Bitte wählen Sie eine Option aus.</span>
     <div class="input-instruction">Bitte dein Wunschlied eingeben:</div>
     <input type="text" id="song" placeholder="Wunschlied">
     <div class="input-instruction">Bitte dein Lieblingsgetränk eingeben:</div>
@@ -120,12 +164,12 @@
     <button onclick="generateAndDownloadCSV()">Formular Generieren & Herunterladen</button>
     <br>
     <br>
-    <div class="input-instruction-important">2. Sende das Formular an die verlinkte Nummer über Whatsapp</div>
+    <div class="input-instruction-important">2. Sende das Formular (Nachname-Vorname-Wiesenparty.csv Datei) an die verlinkte Nummer über Whatsapp</div>
     <a href="https://wa.me/491759471450" target="_blank"><button>WhatsApp Chat</button></a>
     <br>
     <br>
-    <div class="input-instruction-important">3. Schicke 25€ direkt nach deiner Anmeldung per paypal Freunde an das verlinkte Paypal Profil, gib als Verwendungszweck Vor- und Nachnamen der Personen an, für die du bezahlst</div>
-    <div class="input-instruction-important">Damit der Link funktioniert musst du auf paypal angemeldet sein! Falls sich das Profil nicht öffnet, sende das Geld manuell an "@davidschumacher06"</div>
+    <div class="input-instruction-important">3. Schicke 25€ direkt nach deiner Anmeldung per Paypal Freunde an das verlinkte Paypal Profil, gib als Verwendungszweck Vor- und Nachnamen der Personen an, für die du bezahlst</div>
+    <div class="input-instruction-important">Damit der Link funktioniert musst du auf Paypal angemeldet sein! Falls sich das Profil nicht öffnet, sende das Geld manuell an "@davidschumacher06"</div>
     <a href="https://www.paypal.com/paypalme/davidschumacher06/25" target="_blank"><button>PayPal</button></a>
 </div>
 
@@ -169,6 +213,7 @@
         const birthday = document.getElementById('birthday').value;
         const song = document.getElementById('song').value.trim();
         const drink = document.getElementById('drink').value.trim();
+        const campingSleep = document.getElementById('camping-sleep').value;
 
 
         // Validation
@@ -222,16 +267,22 @@
         } else {
             document.getElementById('birthday-error').style.display = 'none';
         }
+        if (!campingSleep) {
+            document.getElementById('camping-sleep-error').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('camping-sleep-error').style.display = 'none';
+        }
 
         if (!isValid) {
             return;
         }
 
-        const csvContent = `Vorname;Nachname;Email;Handynummer;Stadt;Straße;Hausnummer;Geburtsdatum;Wunschlied;Lieblingsgetränk\n${vorname};${nachname};${email};${handynummer};${stadt};${straße};${hausnummer};${birthday};${song};${drink}`;
+        const csvContent = `Vorname;Nachname;Email;Handynummer;Stadt;Straße;Hausnummer;Geburtsdatum;Wunschlied;Lieblingsgetränk;Schlafen auf dem Campingplatz\n${vorname};${nachname};${email};${handynummer};${stadt};${straße};${hausnummer};${birthday};${song};${drink};${campingSleep}`;
         const blob = new Blob([csvContent], { type: 'text/csv' });
 
-        // Set CSV file name to vorname-nachname.csv
-        const fileName = `${vorname}-${nachname}.csv`;
+        // Set CSV file name to nachname-vorname.csv
+        const fileName = `${nachname}-${vorname}-Wiesenparty.csv`;
 
         const url = URL.createObjectURL(blob);
 

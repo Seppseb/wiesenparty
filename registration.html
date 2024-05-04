@@ -280,7 +280,7 @@
             return;
         }
 
-        const csvContent = `Vorname;Nachname;Email;Handynummer;Stadt;Straße;Hausnummer;Geburtsdatum;Wunschlied;Lieblingsgetränk;Schlafen auf dem Campingplatz\n${vorname};${nachname};${email};${handynummer};${stadt};${straße};${hausnummer};${birthday};${song};${drink};${campingSleep}`;
+        const csvContent = `Vorname,Nachname,Email,Handynummer,Stadt,Straße,Hausnummer,Geburtsdatum,Wunschlied,Lieblingsgetränk,Schlafen auf dem Campingplatz\n${vorname},${nachname},${email},${handynummer},${stadt},${straße},${hausnummer},${birthday},${song},${drink},${campingSleep}`;
         const blob = new Blob([csvContent], { type: 'text/csv' });
 
         // Set CSV file name to nachname-vorname.csv

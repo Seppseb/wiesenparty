@@ -303,7 +303,7 @@
     }
 
     function getAge(birthDateString) {
-        const today = new Date();
+        const today = new Date("2024-06-21");
         const birthDate = new Date(birthDateString);
         let age = today.getFullYear() - birthDate.getFullYear();
         const monthDifference = today.getMonth() - birthDate.getMonth();

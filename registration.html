@@ -150,7 +150,7 @@
     <span class="error-message" id="hausnummer-error">Bitte geben Sie Ihre Hausnummer ein.</span>
     <div class="input-instruction">Bitte dein Geburtsdatum<span class="required">*</span> eingeben:</div>
     <input type="date" id="birthday" placeholder="Geburtsdatum">
-    <span class="error-message" id="birthday-error">Sie müssen mindestens 20 Jahre alt sein, um sich anzumelden.</span>
+    <span class="error-message" id="birthday-error">Sie müssen mindestens 19 Jahre alt sein, um sich anzumelden.</span>
     <div class="input-instruction">Möchtest du den kostenlosen Campingplatz nutzen<span class="required">*</span>:</div>
     <select id="camping-sleep">
         <option value="" disabled selected>Bitte wählen</option>
@@ -267,7 +267,7 @@
         } else {
             document.getElementById('hausnummer-error').style.display = 'none';
         }
-        if (!birthday || getAge(birthday) < 20) {
+        if (!birthday || getAge(birthday) < 19) {
             document.getElementById('birthday-error').style.display = 'block';
             isValid = false;
         } else {
